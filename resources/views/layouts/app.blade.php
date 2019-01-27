@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Student Management Dashboard</title>
+    <title>Southwestern University</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/jquery.js') }}" defer></script>

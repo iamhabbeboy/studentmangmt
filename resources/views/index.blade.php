@@ -298,11 +298,11 @@
 									<input name="email" placeholder="Your Email Address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
 									 required="" type="email">
 									<input type="date" placeholder="Date of Birth" name="dateofbirth" required="">
-									<input type="text" name="state" placeholder="State of origin">
-									<input type="text" name="lga" placeholder="LGA">
+									<input type="text" name="state" placeholder="State of origin" required>
+									<input type="text" name="lga" placeholder="LGA" required="">
 									<input type="password" name="password" placeholder="Password" required="">
 									<input type="password" name="pass" placeholder="Confirm Password" required="">
-									 <textarea class="" placeholder="Address" style="width: 100%;border: none;border-bottom: 1px solid #eeeeee;padding: 12px;"></textarea>
+									 <textarea class="" placeholder="Address" style="width: 100%;border: none;border-bottom: 1px solid #eeeeee;padding: 12px;" required=""></textarea>
 								</div>
 								<div class="col-lg-12 text-center" id="returning">
 									<button class="primary-btn" type="submit">Submit</button>
