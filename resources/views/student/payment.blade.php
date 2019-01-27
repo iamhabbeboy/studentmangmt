@@ -7,7 +7,7 @@
 <input type="hidden" value="{{Session::token()}}" name="_token" id="_token">
 
 <script>
-const amount = 10000;
+const amount = 10500000;
 const student_id = document.querySelector('#modelData').value;
 const token = document.querySelector('#_token').value;
   PaystackPop.setup({
