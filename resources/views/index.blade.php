@@ -292,7 +292,7 @@
 							<div class="row">
 								<div class="col-lg-12 form_group">
 									<label>photo</label>
-									<input type="file" name="photo" accept=".png,.jpeg,.jpg,.gif">
+									<input type="file" name="photo" accept=".png,.jpeg,.jpg,.gif" required>
 									<input name="name" placeholder="Your Name" required="" type="text">
 									<input name="phone" placeholder="Your Phone Number" required="" type="tel">
 									<input name="email" placeholder="Your Email Address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
