@@ -17,6 +17,18 @@
 	<link rel="stylesheet" href="vendors/animate-css/animate.css">
 	<!-- main css -->
 	<link rel="stylesheet" href="css/style.css">
+
+	<script>
+		function validator(){
+			const pass = document.querySelector('#pass');
+			const confpass = document.querySelector('#confpass');
+			if (pass.value != confpass.value) {
+				alert('Password not matched');
+				return false;
+			}
+			return true;
+		}
+	</script>
 </head>
 
 <body>
@@ -287,7 +299,7 @@
 					<div class="register_form">
 						<h3>New Applicant</h3>
 						<p>fill the form below to continue</p>
-						<form class="form_area" id="myForm1" action="/account/auth" method="post" enctype="multipart/form-data">
+						<form class="form_area" id="myForm1" action="/account/auth" method="post" enctype="multipart/form-data" onsubmit="return validator()">
 							@csrf
 							<div class="row">
 								<div class="col-lg-12 form_group">
@@ -300,8 +312,8 @@
 									<input type="date" placeholder="Date of Birth" name="dateofbirth" required="">
 									<input type="text" name="state" placeholder="State of origin" required>
 									<input type="text" name="lga" placeholder="LGA" required="">
-									<input type="password" name="password" placeholder="Password" required="">
-									<input type="password" name="pass" placeholder="Confirm Password" required="">
+									<input type="password" name="password" placeholder="Password" required="" id="pass">
+									<input type="password" name="pass" placeholder="Confirm Password" required="" id="confpass">
 									 <textarea class="" placeholder="Address" style="width: 100%;border: none;border-bottom: 1px solid #eeeeee;padding: 12px;" required=""></textarea>
 								</div>
 								<div class="col-lg-12 text-center" id="returning">
