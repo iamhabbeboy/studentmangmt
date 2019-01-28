@@ -40,6 +40,14 @@ class HomeController extends Controller
      */
     public function store(Request $request, Courses $course, CourseInfo $courseInfo)
     {
+        if ($request->course_id) {
+            $course->where('id', $request->course_id)
+                ->update(['level' => $request->level, 'semester' => $request->semester]);
+
+            $response = $courseInfo->where('course_id', $request->course_id)
+                ->update(['title' => $request->title, 'code' => $request->code, 'unit' => $request->unit]);
+            return redirect()->back()->with('update_msg', 'Updated successfully')->withInput();
+        }
         $level = $request->level;
         $semester = $request->semester;
         $lastId = $course->create(['level' => $level, 'semester' => $semester], $request->all());

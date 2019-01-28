@@ -25,5 +25,7 @@
 			</tr>
 		@endforeach
 	</table>
+	@else
+		<div class="alert alert-info">No payment history available</div>
 	@endif
 </div>

@@ -26,42 +26,51 @@
 	<span class="float-right">
 			<a href="#" onclick="showHide(event)">Add Course </a>
 		</span>
+		<div class="clearfix"></div>
 			@if (Session::has('msg'))
 				<div class="alert alert-info">{{Session('msg')}}</div>
 			@endif
-		<div id="add-course" style="display: none">
+			@if (Session::has('update_msg'))
+				<div class="alert alert-info">{{Session('update_msg')}}</div>
+			@endif
+		<div id="add-course"
+			@if(array_get($_GET, 'edit') == 'true')
+				style="display: block"
+			@endif
+			style="display: none">
 		<form method="post" action="/add-course">
 			@csrf
+			<input type="hidden" value="{{array_get($_GET, 'id')}}" name="course_id">
 			<div class="form-group">
 				<label>Level</label>
 				<select class="form-control" name="level" required>
 					<option value="">select</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
+					<option value="1" {{(array_get($_GET, 'level') == '1') ? 'selected' : ''}}>1</option>
+					<option value="2" {{(array_get($_GET, 'level') == '2') ? 'selected' : ''}}>2</option>
+					<option value="3" {{(array_get($_GET, 'level') == '3') ? 'selected' : ''}}>3</option>
+					<option value="4" {{(array_get($_GET, 'level') == '4') ? 'selected' : ''}}>4</option>
+					<option value="5" {{(array_get($_GET, 'level') == '5') ? 'selected' : ''}}>5</option>
 				</select>
 			</div>
 			<div class="form-group">
 				<label>Semester</label>
 				<select class="form-control" name="semester" required>
 					<option value="">select</option>
-					<option value="first">first</option>
-					<option value="second">second</option>
+					<option value="first" {{(array_get($_GET, 'semester') == 'first') ? 'selected' : ''}}>first</option>
+					<option value="second" {{(array_get($_GET, 'semester') == 'second') ? 'selected' : ''}}>second</option>
 				</select>
 			</div>
 			<div class="form-group">
 				<label>Course Title</label>
-				<input class="form-control" type="text" name="title" required>
+				<input class="form-control" type="text" name="title" required value="{{array_get($_GET, 'title')}}">
 			</div>
 			<div class="form-group">
 				<label>Course Code</label>
-				<input class="form-control" type="text" name="code" required>
+				<input class="form-control" type="text" name="code" required value="{{array_get($_GET, 'code')}}">
 			</div>
 			<div class="form-group">
 				<label>Course Unit</label>
-				<input class="form-control" type="number" name="unit" required>
+				<input class="form-control" type="number" name="unit" required value="{{array_get($_GET, 'unit')}}">
 			</div>
 			<div class="form-group">
 				<button class="btn-primary btn btn-lg">Submit</button>
@@ -91,7 +100,7 @@
 						<td>{{$course->hasCourseInfo->code}}</td>
 						<td>{{$course->hasCourseInfo->unit}}</td>
 						<td>{{$course->hasCourseInfo->created_at->diffForHumans()}}</td>
-						<td><a href="?p=course&edit=true"><small>edit</small></a>&nbsp;
+						<td><a href="?p=course&edit=true&id={{$course->id}}&level={{$course->level}}&semester={{$course->semester}}&title={{$course->hasCourseInfo->title}}&code={{$course->hasCourseInfo->code}}&unit={{$course->hasCourseInfo->unit}}"><small>edit</small></a>&nbsp;
 						<a href="/course/{{$course->id}}"><small>delete</small></a></td>
 					</tr>
 				@endforeach
