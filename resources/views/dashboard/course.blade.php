@@ -92,6 +92,7 @@
 						<td>{{array_get($course, 'has_course_info.created_at')}}</td>
 					</tr>
 				@endforeach
+			</table>
 			@endif
 		</div>
 	</div>

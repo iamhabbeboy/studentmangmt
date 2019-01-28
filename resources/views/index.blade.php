@@ -301,6 +301,9 @@
 						<p>fill the form below to continue</p>
 						<form class="form_area" id="myForm1" action="/account/auth" method="post" enctype="multipart/form-data" onsubmit="return validator()">
 							@csrf
+							@if (Session::has('msg'))
+								<div class="alert alert-info">{{Session('msg')}}</div>
+							@endif
 							<div class="row">
 								<div class="col-lg-12 form_group">
 									<label>photo</label>

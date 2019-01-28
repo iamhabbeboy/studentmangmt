@@ -73,7 +73,7 @@ class StudentController extends Controller
 
         $sql = $this->student->create($data);
         session(['student_data' => $data]);
-        return redirect('/account/dashboard');
+        return redirect()->back()->with('msg', 'your application has been submitted successfully, check back for approval')->withInput();
     }
 
     /**
@@ -137,6 +137,9 @@ class StudentController extends Controller
             $password_check = Hash::check($request->password, $first->password);
             if ($password_check) {
                 session(['student_data' => $first]);
+                if ($first->status != 1) {
+                    return redirect()->back()->with('status', 'Application not yet approved')->withInput();
+                }
                 return redirect('/account/dashboard');
             } else {
                 return redirect()->back()->with('error', 'Invalid information supplied')->withInput();

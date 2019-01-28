@@ -9,6 +9,8 @@
                     @include('dashboard.course')
                 @elseif (array_get($_GET, 'p') == 'payment')
                     @include('dashboard.payment')
+                @elseif (array_get($_GET, 'p') == 'applicant')
+                    @include('dashboard.applicant')
                 @else
                     <div class="card-header">Dashboard</div>
 

@@ -33,6 +33,10 @@
 					@if(Session::has('error'))
 						<div class="alert alert-info">{{Session('error')}}</div>
 					@endif
+
+					@if (Session::has('status'))
+						<div class="alert-info alert">{{Session('status')}}</div>
+					@endif
 					<div class="form-group">
 						<label>Email Address</label>
 						<input class="form-control" type="email" name="email">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\CourseInfo;
 use App\Courses;
 use App\Payment;
+use App\Student;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,11 +25,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Courses $course, Payment $payment)
+    public function index(Courses $course, Payment $payment, Student $student)
     {
+        $students = $student->all();
         $courses = $course->loadCourse()->get()->toArray();
         $payments = $payment->loadPayment()->get()->toArray();
-        return view('home', compact('courses', 'payments'));
+        return view('home', compact('courses', 'payments', 'students'));
     }
 
     /**
@@ -46,5 +48,12 @@ class HomeController extends Controller
         // dd($data);
         $response = $courseInfo->firstOrCreate(['title' => $request->title], $data);
         return redirect()->back()->with('msg', 'Successfully added')->withInput();
+    }
+
+    public function applicant(Request $request, Student $student)
+    {
+        $status = $request->option;
+        $students = $student->where('id', $status)->update(['status' => $status]);
+        return redirect()->back()->with('status', 'application status changed successfully')->withInput();
     }
 }

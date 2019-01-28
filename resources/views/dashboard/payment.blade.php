@@ -24,5 +24,6 @@
 				<td>{{array_get($payment, 'created_at')}}</td>
 			</tr>
 		@endforeach
+	</table>
 	@endif
 </div>

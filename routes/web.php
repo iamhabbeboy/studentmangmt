@@ -32,3 +32,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/add-course', 'HomeController@store');
+Route::post('/applicant', 'HomeController@applicant');
