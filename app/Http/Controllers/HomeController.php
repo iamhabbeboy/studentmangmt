@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function index(Courses $course, Payment $payment, Student $student)
     {
         $students = $student->all();
-        $courses = $course->loadCourse()->get()->toArray();
+        $courses = $course->loadCourse()->get();
         $payments = $payment->loadPayment()->get()->toArray();
         return view('home', compact('courses', 'payments', 'students'));
     }
@@ -55,5 +55,12 @@ class HomeController extends Controller
         $status = $request->option;
         $students = $student->where('id', $status)->update(['status' => $status]);
         return redirect()->back()->with('status', 'application status changed successfully')->withInput();
+    }
+
+    public function deleteCourse($id)
+    {
+        $courses = Courses::where('id', $id)->delete();
+        $courseInfo = CourseInfo::where('course_id', $id)->delete();
+        return redirect()->back()->with('success', 'Course Deleted Successfully')->withInput();
     }
 }

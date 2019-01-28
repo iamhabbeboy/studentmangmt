@@ -80,16 +80,19 @@
 						<th>Code</th>
 						<th>Unit</th>
 						<th>Date</th>
+						<th>Option</th>
 					</tr>
 				@foreach($courses as $key => $course)
 					<tr>
 						<td>{{$key+1}}</td>
-						<td>year {{array_get($course, 'level')}}</td>
-						<td>{{array_get($course, 'semester')}}</td>
-						<td>{{array_get($course, 'has_course_info.title')}}</td>
-						<td>{{array_get($course, 'has_course_info.code')}}</td>
-						<td>{{array_get($course, 'has_course_info.unit')}}</td>
-						<td>{{array_get($course, 'has_course_info.created_at')}}</td>
+						<td>year {{$course->level}}</td>
+						<td>{{$course->semester}}</td>
+						<td>{{$course->hasCourseInfo->title}}</td>
+						<td>{{$course->hasCourseInfo->code}}</td>
+						<td>{{$course->hasCourseInfo->unit}}</td>
+						<td>{{$course->hasCourseInfo->created_at->diffForHumans()}}</td>
+						<td><a href="?p=course&edit=true"><small>edit</small></a>&nbsp;
+						<a href="/course/{{$course->id}}"><small>delete</small></a></td>
 					</tr>
 				@endforeach
 			</table>
