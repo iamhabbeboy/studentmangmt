@@ -53,7 +53,7 @@
 						</a>
 					</div>
 					<div class="col-lg-6 col-sm-6 col-8 header-top-right">
-						<a href="#" class="text-uppercase">Login</a>
+						<a href="/login" target="_blank" class="text-uppercase">Login</a>
 					</div>
 				</div>
 			</div>
