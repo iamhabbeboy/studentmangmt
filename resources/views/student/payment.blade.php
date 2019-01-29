@@ -17,7 +17,7 @@ const token = document.querySelector('#_token').value;
    container: 'paystackEmbedContainer',
    callback: function(response){
    		const data = {
-        amount : amount,
+        amount : 105000,
         ref: response.reference,
         student_id: student_id,
         _token: token
