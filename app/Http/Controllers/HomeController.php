@@ -61,8 +61,14 @@ class HomeController extends Controller
     public function applicant(Request $request, Student $student)
     {
         $status = $request->option;
-        $students = $student->where('id', $status)->update(['status' => $status]);
+        $students = $student->where('id', $request->student_id)->update(['status' => $status]);
         return redirect()->back()->with('status', 'application status changed successfully')->withInput();
+    }
+
+    private function studentMatricGenerator()
+    {
+        $format = "SUN17/0103/";
+        return $format;
     }
 
     public function deleteCourse($id)
