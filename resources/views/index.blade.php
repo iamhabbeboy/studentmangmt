@@ -32,7 +32,7 @@
 </head>
 
 <body>
-
+ {{-- <img src="{{ dirname("/studentmanagement.com/")}}/event2.jpg"> --}}
 	<!--================ Start Header Menu Area =================-->
 	<header class="header_area">
 		<div class="header-top">

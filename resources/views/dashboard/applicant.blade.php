@@ -13,6 +13,7 @@
 				<th>Name</th>
 				<th>Email</th>
 				<th>Phone</th>
+				<th>Matric No.</th>
 				<th>Date</th>
 				<th>Option</th>
 			</tr>
@@ -24,6 +25,7 @@
 				<td>{{ $student->name}}</td>
 				<td>{{ $student->email}}</td>
 				<td>{{$student->phone}}</td>
+				<td>{{$student->matric_no}}</td>
 				<td>{{$student->created_at->diffForHumans()}}</td>
 				<td>
 					<select name="option" style="width: 50px">
