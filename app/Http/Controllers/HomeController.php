@@ -79,8 +79,8 @@ class HomeController extends Controller
                 $updateData = ['status' => $status, 'matric_no' => $split[0], 'matric_no_counter' => array_get($split, '1')];
                 $students = $student->where('id', $request->student_id)->update($updateData);
                 //Send mail to student
-                // $studentInfo = $student->find($request->student_id);
-                // $this->sendMatricNoToMail($studentInfo->toArray());
+                $studentInfo = $student->find($request->student_id);
+                $this->sendMatricNoToMail($studentInfo->toArray());
             }
         } else {
             $updateData = ['status' => $status];
@@ -104,12 +104,12 @@ class HomeController extends Controller
     private function sendMatricNoToMail($studentDetails)
     {
         $mailProvider = new MailProvider([
-            'username' => 'iamhabbeboy@gmail.com',
-            'password' => '07087322191',
+            'username' => 'swuregandpay@gmail.com',
+            'password' => 'Education',
             'smtp' => 'smtp.gmail.com',
         ]);
 
-        $mailProvider->from = ['iamhabbeboy@gmail.com' => 'Southwestern University'];
+        $mailProvider->from = ['swuregandpay@gmail.com' => 'Southwestern University'];
         $mailProvider->to = [
             array_get($studentDetails, 'email'),
             array_get($studentDetails, 'email') => 'Student Details',
